@@ -6,16 +6,12 @@ on:
       - master
 
 env:
+  DOCKER_IMAGE_NAME: rohitnb-azure-ttt
+  IMAGE_REGISTRY_URL: docker.pkg.github.com
   AZURE_RESOURCE_GROUP: cd-with-actions
   AZURE_APP_PLAN: actions-ttt-deployment
   AZURE_LOCATION: '"Central US"'
-  #################################################
-  ### USER PROVIDED VALUES ARE REQUIRED BELOW   ###
-  #################################################
-  #################################################
-  ### REPLACE USERNAME WITH GH USERNAME         ###
   AZURE_WEBAPP_NAME: rohitnb-ttt-app
-  #################################################
 
 jobs:
   build:
