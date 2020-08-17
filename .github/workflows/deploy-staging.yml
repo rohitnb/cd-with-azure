@@ -10,6 +10,8 @@ env:
   AZURE_WEBAPP_NAME: rohitnb-ttt-app
 
 jobs:
+
+  #First job with ID: "build"
   build:
     if: contains(github.event.pull_request.labels.*.name, 'stage')
 
@@ -26,6 +28,7 @@ jobs:
           name: webpack artifacts
           path: public/
 
+  #Second job with ID: "Build Docker Image"
   Build-Docker-Image:
     runs-on: ubuntu-latest
     needs: build
@@ -46,6 +49,7 @@ jobs:
           repo-token: ${{secrets.GITHUB_TOKEN}}
           image-name: ${{env.DOCKER_IMAGE_NAME}}
 
+  #Third job with ID: "Deploy to Azure"
   Deploy-to-Azure:
     runs-on: ubuntu-latest
     needs: Build-Docker-Image
